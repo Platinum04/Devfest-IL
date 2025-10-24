@@ -1,0 +1,104 @@
+{
+    "questions": [
+        {
+            "question": "What does GDG stand for?",
+            "options": [
+                "Google Developers Group",
+                "Global Design Guild",
+                "Google Data Grid",
+                "General Developer Guild"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Where is GDG Ilorin located?",
+            "options": [
+                "Kwara State, Nigeria",
+                "Lagos, Nigeria",
+                "Abuja, Nigeria",
+                "Ibadan, Nigeria"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which Google product allows you to build AR experiences easily?",
+            "options": [
+                "ARCore",
+                "TensorFlow",
+                "Firebase",
+                "YouTube VR"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is the main focus of GDG Ilorin?",
+            "options": [
+                "Community learning and tech skill development",
+                "Selling Google devices",
+                "Game development only",
+                "Government partnerships"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What programming language is primarily used in Android development?",
+            "options": [
+                "Kotlin",
+                "Swift",
+                "C#",
+                "Ruby"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which of these is a Google technology for machine learning?",
+            "options": [
+                "TensorFlow",
+                "React",
+                "Docker",
+                "Vue"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What headset is used for Google\u2019s immersive experiences?",
+            "options": [
+                "Quest 3",
+                "HTC Vive",
+                "Apple Vision Pro",
+                "Google Lens"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is Project Moohan focused on?",
+            "options": [
+                "Mixed Reality collaboration between Google and Samsung",
+                "Google Maps 3D",
+                "Android optimization",
+                "Quantum computing"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What tool is best for creating cloud-based apps with Google?",
+            "options": [
+                "Firebase",
+                "Unreal Engine",
+                "Blender",
+                "GitHub"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which GDG event focuses on developers learning about Google\u2019s latest technologies?",
+            "options": [
+                "DevFest",
+                "Google I/O",
+                "TechSummit",
+                "HackWeek"
+            ],
+            "correctAnswerIndex": 0
+        }
+    ]
+}
