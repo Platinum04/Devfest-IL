@@ -1,104 +1,219 @@
 {
-    "questions": [
-        {
-            "question": "What does GDG stand for?",
-            "options": [
-                "Google Developers Group",
-                "Global Design Guild",
-                "Google Data Grid",
-                "General Developer Guild"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "Where is GDG Ilorin located?",
-            "options": [
-                "Kwara State, Nigeria",
-                "Lagos, Nigeria",
-                "Abuja, Nigeria",
-                "Ibadan, Nigeria"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "Which Google product allows you to build AR experiences easily?",
-            "options": [
-                "ARCore",
-                "TensorFlow",
-                "Firebase",
-                "YouTube VR"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What is the main focus of GDG Ilorin?",
-            "options": [
-                "Community learning and tech skill development",
-                "Selling Google devices",
-                "Game development only",
-                "Government partnerships"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What programming language is primarily used in Android development?",
-            "options": [
-                "Kotlin",
-                "Swift",
-                "C#",
-                "Ruby"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "Which of these is a Google technology for machine learning?",
-            "options": [
-                "TensorFlow",
-                "React",
-                "Docker",
-                "Vue"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What headset is used for Google\u2019s immersive experiences?",
-            "options": [
-                "Quest 3",
-                "HTC Vive",
-                "Apple Vision Pro",
-                "Google Lens"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What is Project Moohan focused on?",
-            "options": [
-                "Mixed Reality collaboration between Google and Samsung",
-                "Google Maps 3D",
-                "Android optimization",
-                "Quantum computing"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What tool is best for creating cloud-based apps with Google?",
-            "options": [
-                "Firebase",
-                "Unreal Engine",
-                "Blender",
-                "GitHub"
-            ],
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "Which GDG event focuses on developers learning about Google\u2019s latest technologies?",
-            "options": [
-                "DevFest",
-                "Google I/O",
-                "TechSummit",
-                "HackWeek"
-            ],
-            "correctAnswerIndex": 0
-        }
-    ]
+  "questions": [
+    {
+      "question": "What does GDG stand for?",
+      "options": ["Google Developer Groups", "Global Design Guild", "General Dev Group", "Google Data Grid"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which programming language is primarily used in Flutter development?",
+      "options": ["Swift", "Dart", "Kotlin", "Java"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": "What year was DevFest first launched globally by Google Developers?",
+      "options": ["2009", "2011", "2013", "2015"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": "Which Google Cloud service is commonly used for hosting web applications?",
+      "options": ["Firebase Hosting", "AWS S3", "Vercel", "Heroku"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is TensorFlow mainly used for?",
+      "options": ["Machine Learning and AI", "Web Hosting", "Game Development", "UI Design"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Firebase service is used for authentication?",
+      "options": ["Firebase Auth", "Firestore", "Firebase Cloud Messaging", "App Check"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What command initializes a Git repository?",
+      "options": ["git start", "git new", "git create", "git init"],
+      "correctAnswerIndex": 3
+    },
+    {
+      "question": "Which Google Cloud service is used to deploy containerized applications?",
+      "options": ["Google Kubernetes Engine", "Google Workspace", "Google Analytics", "Google Maps"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What does API stand for?",
+      "options": ["Application Programming Interface", "Advanced Processing Interface", "Automated Program Input", "App Processing Interface"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which programming language was primarily used before Kotlin became the official Android language?",
+      "options": ["Python", "Dart", "Swift", "Java"],
+      "correctAnswerIndex": 3
+    },
+    {
+      "question": "What Google Cloud product allows scalable data analysis?",
+      "options": ["BigQuery", "Firebase", "Dialogflow", "Cloud Storage"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Flutter widget is used for layout design?",
+      "options": ["Route", "Container", "Stream", "Dialog"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": "Which Google tool allows voice-based AI interaction?",
+      "options": ["Dialogflow", "Cloud Build", "Google Ads", "Analytics"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which HTML element is used to display images?",
+      "options": ["<img>", "<pic>", "<image>", "<src>"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the command to check the status of files in Git?",
+      "options": ["git status", "git scan", "git files", "git check"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google tool is used for training custom ML models without coding?",
+      "options": ["Teachable Machine", "TensorFlow Lite", "AutoML", "Vertex AI"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google Cloud service stores and retrieves files (like images or PDFs)?",
+      "options": ["Cloud Storage", "App Engine", "BigQuery", "Firestore"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the latest version of Android called as of 2025?",
+      "options": ["Android 13", "Android 14", "Android 15", "Android 12"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "question": "Which Google service allows real-time database syncing for apps?",
+      "options": ["Firestore", "Firebase Realtime Database", "BigQuery", "Cloud Storage"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": "What year was GDG Ilorin founded?",
+      "options": ["2015", "2018", "2016", "2019"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": "Which Firebase service is used for push notifications?",
+      "options": ["Firebase Cloud Messaging", "Firebase Auth", "Firebase Hosting", "Cloud Firestore"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "The programming language used to create websites’ structure is:",
+      "options": ["HTML", "CSS", "Python", "JavaScript"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "The tool used for managing dependencies in Flutter is:",
+      "options": ["pubspec.yaml", "npm", "Yarn", "build.gradle"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What does UI stand for?",
+      "options": ["User Interface", "Universal Interaction", "Unified Integration", "User Intelligence"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google tool helps you visualize and analyze website traffic?",
+      "options": ["Google Analytics", "Google Ads", "Firebase", "Cloud Build"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the primary goal of DevFest events?",
+      "options": ["Bring developers together to learn, connect, and grow", "Sell Google merchandise", "Launch Google devices", "Train Android devs only"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which of these Google services focuses on conversational AI and chatbots?",
+      "options": ["Dialogflow", "Google Meet", "Firebase Hosting", "Android Studio"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "The term 'Open Source' means:",
+      "options": ["Software whose code is publicly accessible and modifiable", "Paid software", "Unlicensed software", "Private corporate code"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What Google Cloud service is best for storing and retrieving large files?",
+      "options": ["Cloud Storage", "BigQuery", "App Engine", "Firestore"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "GDG stands for what?",
+      "options": ["Google Developer Groups", "Global Developers Guild", "Google Dev Gathering", "General Dev Group"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the purpose of Google Cloud Functions?",
+      "options": ["Run backend code in response to events", "Host websites", "Manage databases", "Create Android UIs"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which tool is best for analyzing big data on Google Cloud?",
+      "options": ["BigQuery", "Dialogflow", "Firebase", "App Engine"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which GDG Ilorin event promotes women in technology?",
+      "options": ["IWD (International Women's Day)", "DevFest", "Cloud Next", "Build with AI"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What framework is used for creating web apps with TypeScript?",
+      "options": ["Angular", "React", "Vue", "Django"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google technology enables serverless application deployment?",
+      "options": ["Cloud Run", "Cloud Vision", "App Engine", "Compute Engine"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the main focus of TensorFlow Lite?",
+      "options": ["Machine learning on mobile and embedded devices", "AI for servers", "Data analytics", "Game development"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which file type is typically used for Android app installation?",
+      "options": [".apk", ".exe", ".zip", ".jar"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which of the following is used for version control?",
+      "options": ["Git", "App Engine", "Firebase", "Cloud Build"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google tool helps developers integrate AI features like text and vision into apps easily?",
+      "options": ["ML Kit", "TensorFlow", "Cloud Build", "Flutter"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What is the name of Google’s AR development platform?",
+      "options": ["ARCore", "Unity", "ARKit", "FlutterAR"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which Google event announces new technologies and updates yearly?",
+      "options": ["Google I/O", "DevFest", "Cloud Next", "Build with AI"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "Which technology allows storing structured NoSQL data in Firebase?",
+      "options": ["Cloud Firestore", "Realtime Database", "Cloud SQL", "BigQuery"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": "What’s the main goal of GDG chapters like Ilorin?",
+      "options": ["Foster learning, networking, and collaboration in tech", "Hire developers for Google", "Promote paid training", "Sell Google devices"],
+      "correctAnswerIndex": 0
+    }
+  ]
 }

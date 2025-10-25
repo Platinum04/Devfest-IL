@@ -24,6 +24,7 @@ public class QuizManager : MonoBehaviour
     public GameObject quizPanel;
     public GameObject resultPanel;
     public GameObject leaderboardPanel;
+    public GameObject gameOverPanel;
 
     [Header("Main Menu UI")]
     public TMP_InputField playerNameInput;
@@ -40,25 +41,30 @@ public class QuizManager : MonoBehaviour
     public TMP_Text leaderboardText;
     public Button leaderboardBackButton;
 
+    [Header("Game Over UI")]
+    public TextMeshProUGUI gameOverText;
+    public Button retryButton;
+    public Button gameOverMenuButton;
+
     private List<QuizQuestion> currentQuestions;
     private int currentQuestionIndex = 0;
     private int selectedAnswerIndex = -1;
     private int score = 0;
     private bool answerSubmitted = false;
 
-    // Timer settings
-    private float timePerQuestion = 15f;
-    private float timeRemaining;
-    private bool timerRunning = false;
-
     private List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
     private string leaderboardFilePath;
+
+    private float quizDuration = 60f; // 1 minutes for 10 questions
+    private float timeRemaining;
+    private bool timerRunning = false;
 
     [System.Serializable]
     public class LeaderboardEntry
     {
         public string playerName;
         public int score;
+        public float timeTaken;
     }
 
     void Start()
@@ -66,23 +72,26 @@ public class QuizManager : MonoBehaviour
         leaderboardFilePath = Path.Combine(Application.persistentDataPath, "leaderboard.json");
         LoadLeaderboard();
 
-        // Default visibility
+        // Panel setup
         splashPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
         quizPanel.SetActive(false);
         resultPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
 
-        // Splash transition
+        // Show main menu after splash
         Invoke(nameof(ShowMainMenu), 5f);
 
-        // Hook up buttons
+        // Button listeners
         startButton.onClick.AddListener(OnStartQuizClicked);
         viewLeaderboardButton.onClick.AddListener(OnViewLeaderboardClicked);
         playAgainButton.onClick.AddListener(ReturnToMainMenu);
         backToMenuButton.onClick.AddListener(ReturnToMainMenu);
         leaderboardBackButton.onClick.AddListener(ReturnToMainMenu);
         skipButton.onClick.AddListener(SkipQuestion);
+        retryButton.onClick.AddListener(RestartQuiz);
+        gameOverMenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
     private void ShowMainMenu()
@@ -91,13 +100,13 @@ public class QuizManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
     }
 
-    public void OnStartQuizClicked()
+    private void OnStartQuizClicked()
     {
         string playerName = playerNameInput.text.Trim();
+
         if (string.IsNullOrEmpty(playerName))
         {
             playerNameInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Please enter your name!";
-            Debug.LogWarning("⚠️ Name required before starting quiz!");
             return;
         }
 
@@ -105,7 +114,7 @@ public class QuizManager : MonoBehaviour
         StartQuiz();
     }
 
-    public void OnViewLeaderboardClicked()
+    private void OnViewLeaderboardClicked()
     {
         mainMenuPanel.SetActive(false);
         leaderboardPanel.SetActive(true);
@@ -117,7 +126,14 @@ public class QuizManager : MonoBehaviour
         resultPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
         quizPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    private void RestartQuiz()
+    {
+        gameOverPanel.SetActive(false);
+        StartQuiz();
     }
 
     public void StartQuiz()
@@ -136,11 +152,30 @@ public class QuizManager : MonoBehaviour
         ShuffleList(currentQuestions);
         currentQuestions = currentQuestions.Take(10).ToList();
 
+        timeRemaining = quizDuration;
+        timerRunning = true;
+
         quizPanel.SetActive(true);
         resultPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
 
         ShowQuestion();
+    }
+
+    void Update()
+    {
+        if (timerRunning)
+        {
+            timeRemaining -= Time.deltaTime;
+            timerText.text = $"⏰ {Mathf.CeilToInt(timeRemaining)}s";
+
+            if (timeRemaining <= 0f)
+            {
+                timerRunning = false;
+                GameOver();
+            }
+        }
     }
 
     private void ShowQuestion()
@@ -158,11 +193,6 @@ public class QuizManager : MonoBehaviour
         questionText.text = question.question;
         questionNumberText.text = $"Question {currentQuestionIndex + 1} of {currentQuestions.Count}";
 
-        // Reset timer
-        timeRemaining = timePerQuestion;
-        timerRunning = true;
-
-        // Set options
         for (int i = 0; i < optionButtons.Length; i++)
         {
             var btn = optionButtons[i];
@@ -176,29 +206,12 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // Run timer if active
-        if (timerRunning)
-        {
-            timeRemaining -= Time.deltaTime;
-            if (timerText != null)
-                timerText.text = $"Time Left: {Mathf.Ceil(timeRemaining)}s";
-
-            if (timeRemaining <= 0f)
-            {
-                timerRunning = false;
-                SkipQuestion();
-            }
-        }
-    }
-
     private void SelectAnswer(int index)
     {
         if (answerSubmitted) return;
 
+        selectedAnswerIndex = index;
         answerSubmitted = true;
-        timerRunning = false;
 
         bool isCorrect = index == currentQuestions[currentQuestionIndex].correctAnswerIndex;
 
@@ -206,7 +219,7 @@ public class QuizManager : MonoBehaviour
         {
             if (i == currentQuestions[currentQuestionIndex].correctAnswerIndex)
                 optionButtons[i].image.color = Color.green;
-            else if (i == index)
+            else if (i == selectedAnswerIndex)
                 optionButtons[i].image.color = Color.red;
         }
 
@@ -216,12 +229,11 @@ public class QuizManager : MonoBehaviour
 
     private void SkipQuestion()
     {
-        if (answerSubmitted) return;
-
-        answerSubmitted = true;
-        timerRunning = false;
-
-        Invoke(nameof(NextQuestion), 0.5f);
+        if (!answerSubmitted)
+        {
+            answerSubmitted = true;
+            Invoke(nameof(NextQuestion), 0.5f);
+        }
     }
 
     private void NextQuestion()
@@ -235,24 +247,34 @@ public class QuizManager : MonoBehaviour
 
     private void ShowResults()
     {
+        timerRunning = false;
         quizPanel.SetActive(false);
         resultPanel.SetActive(true);
-        timerRunning = false;
-
         resultText.text = $"You scored {score} out of {currentQuestions.Count}!";
 
+        float timeTaken = quizDuration - timeRemaining;
         string playerName = !string.IsNullOrEmpty(playerNameInput.text)
             ? playerNameInput.text
             : "Guest";
 
-        AddToLeaderboard(playerName, score);
+        AddToLeaderboard(playerName, score, timeTaken);
         SaveLeaderboard();
     }
 
-    private void AddToLeaderboard(string playerName, int score)
+    private void GameOver()
     {
-        leaderboard.Add(new LeaderboardEntry { playerName = playerName, score = score });
-        leaderboard = leaderboard.OrderByDescending(entry => entry.score).Take(10).ToList();
+        quizPanel.SetActive(false);
+        gameOverPanel.SetActive(true);
+        gameOverText.text = $"⏰ Time’s Up!\nYou scored {score} / {currentQuestions.Count}";
+    }
+
+    private void AddToLeaderboard(string playerName, int score, float timeTaken)
+    {
+        leaderboard.Add(new LeaderboardEntry { playerName = playerName, score = score, timeTaken = timeTaken });
+        leaderboard = leaderboard.OrderByDescending(e => e.score)
+                                 .ThenBy(e => e.timeTaken)
+                                 .Take(10)
+                                 .ToList();
     }
 
     private void ShowLeaderboardPanel()
@@ -261,7 +283,7 @@ public class QuizManager : MonoBehaviour
         int rank = 1;
         foreach (var entry in leaderboard)
         {
-            leaderboardText.text += $"{rank}. {entry.playerName} — {entry.score}\n";
+            leaderboardText.text += $"{rank}. {entry.playerName} — {entry.score} pts — {entry.timeTaken:F1}s\n";
             rank++;
         }
 
